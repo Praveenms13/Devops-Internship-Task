@@ -12,15 +12,20 @@ Getting Started
 2.  Set up a Python virtual environment to manage dependencies. You can create a virtual environment using tools like \`virtualenv\` or \`venv\`. (Do this outside the \`auth_sys\` folder)
     
         python3 -m venv env
+    Activate the venv
+    
+        source env/bin/activate
 
 3.  Create a \`.env\` file to store the database creds (Do this outside the \`auth_sys\` folder)
 
         nano .env    
 
-        DB_USER=<username>
+        DB_USER=root
         DB_PASSWORD=<password>
         DB_PORT=3306
         DB_NAME=login_register
+
+    Caution: Create the seperate database user and give proper privilages for secure use !!
 4.  Build the Docker image for the project by running the following command in the project directory (Do this outside the \`auth_sys\` folder)
     
         sudo docker compose up --build
