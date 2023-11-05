@@ -36,8 +36,6 @@ services:
       - ALLOWED_HOSTS=localhost,127.0.0.1
     depends_on:
       - mariadb
-    volumes:
-      - ./auth_sys:/usr/src/app
     env_file:
       - .env
     networks:

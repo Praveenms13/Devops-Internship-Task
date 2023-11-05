@@ -9,6 +9,7 @@ mariadb_container_name = "my-mariadb-container"
 mariadb_ip = socket.gethostbyname(mariadb_container_name)
 print("---------------------------------------------------")
 print(f"The IP address of the MariaDB container is {mariadb_ip}")
+print(f"The IP address of django container is {socket.gethostbyname(socket.gethostname())}")
 print("---------------------------------------------------")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
