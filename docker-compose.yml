@@ -1,0 +1,52 @@
+version: '3.1'
+
+services:
+  mariadb:
+    image: mariadb
+    container_name: my-mariadb-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root@123
+      MYSQL_DATABASE: mydb
+    ports:
+      - 127.0.0.1:3306:3306
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - my_network
+
+  redis:
+    image: redis:latest
+    container_name: my-redis-server
+    networks:
+      - my_network
+    ports:
+      - 127.0.0.1:6379:6379
+    volumes:
+      - redis-data:/data
+  
+  django:
+    build: auth_sys/
+    image: django-docker:0.0.1
+    container_name: django-container
+    ports:
+      - 127.0.0.1:8000:8000
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=1098A1098A
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+    depends_on:
+      - mariadb
+    volumes:
+      - ./auth_sys:/usr/src/app
+    env_file:
+      - .env
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
+
+volumes:
+  mariadb_data:
+  redis-data:
