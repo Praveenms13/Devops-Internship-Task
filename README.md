@@ -26,7 +26,7 @@ Getting Started
         DB_NAME=login_register
 
     Caution: Create the seperate database user and give proper privilages for secure use !!
-4.  Build the Docker image for the project by running the following command in the project directory (Do this outside the \`auth_sys\` folder)
+4.  Build and run the Docker image for the project by running the following command in the project directory (Do this outside the \`auth_sys\` folder)
     
         sudo docker compose up --build
     
@@ -34,7 +34,7 @@ Getting Started
     
         mysql -h 127.0.0.1 -u root -p
     
-    If prompted for a password, refer to the \`docker-compose.yml\` file for the root password.
+    If prompted for a password, refer to the \`docker-compose.yml\` file for the root password. after creating the database restart the docker container.
 6.  After successfully logging in to the MariaDB container, create a new database named "login\_register" with the following SQL command:
     
         CREATE DATABASE login_register;
